@@ -8,11 +8,14 @@
 - D -> Depedency Inversion
 
 SOLID Principle
-- S RP - Builder, Factory
-- O CP - Factory, Strategy
-- L SP - Strategy, Template
-- I SP - Adapter
-- D IP - Factory, Dependency Injection
+
+| Principle | Design Pattern                |
+|-----------|-------------------------------|
+| S RP      | Builder, Factory              |
+| O CP      | Factory, Strategy             |
+| L SP      | Strategy, Template            |
+| I SP      | Adapter                       |
+| D IP      | Factory, Dependency Injection |
 
 
 # Design Pattterns
