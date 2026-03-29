@@ -1,17 +1,11 @@
 package org.example;
 
+import org.example.behavioural.command.Command;
+import org.example.behavioural.command.CommandInvoker;
+import org.example.behavioural.command.OrderProcessor;
+import org.example.behavioural.command.PlaceOrderCommand;
+import org.example.behavioural.observer.*;
 import org.example.creational.builder.Order;
-import org.example.creational.factory.Payment;
-import org.example.creational.factory.PaymentFactory;
-import org.example.creational.factory.PaymentType;
-import org.example.structural.adapter.PaymentProcessor;
-import org.example.structural.adapter.PaypalAdapter;
-import org.example.structural.adapter.PaytmAdapter;
-import org.example.structural.adapter.PhonePeAdapter;
-import org.example.structural.composite.Item;
-import org.example.structural.composite.ProductBundle;
-import org.example.structural.decorator.*;
-import org.example.structural.facade.OrderFacade;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -82,8 +76,46 @@ public class Main {
         System.out.println(summerBonanzaBundle.description() + " now selling at :"+summerBonanzaBundle.price());
 
 */      // Facade
-        Product iphone = new BasicProduct("Iphone 17 pro max",15000.00);
+       /* Product iphone = new BasicProduct("Iphone 17 pro max",15000.00);
         OrderFacade facade = new OrderFacade();
-        facade.placeOrder(iphone);
-    }
-    }
+        facade.placeOrder(iphone);*/
+        //Strategy Design Pattern
+       /* PricingRegistry pricingRegistry = new PricingRegistry();
+        pricingRegistry.addToRegistry("LOYALTY", new LoyaltyDiscount());
+        pricingRegistry.addToRegistry("COUPON", new CouponDiscount());
+        Cart pricingService = new Cart(pricingRegistry);
+        OrderContext orderContext = OrderContext.
+                builder().
+                amount(1000).
+                userType("PREMIUM").
+                coupon(List.of("SAVE10","GOLD")).
+                build();
+        double finalPrice = pricingService.calculate("COUPON",orderContext);
+        System.out.println("My Final Price is : $ "+finalPrice);
+        finalPrice = pricingService.calculate("LOYALTY",orderContext);
+        System.out.println("My Final Price is : $ "+finalPrice);*/
+        //Observer Design Pattern
+        /*EventBus eventBus = new EventBus();
+        eventBus.subscribe(new EmailNotifier());
+        eventBus.subscribe(new SlackNotifier());
+        eventBus.subscribe(new SMSNotifier());
+        eventBus.subscribe(new TelegramNotifier());
+        OrderService orderService = new OrderService(eventBus);
+        System.out.println("Publishing Order Events ...");
+        orderService.updateStatus("O123","PLACED");
+        Thread.sleep(2000);
+        orderService.updateStatus("0123","SHIPPED");
+        Thread.sleep(2000);
+        orderService.updateStatus("01233","OUT FOR DELIVERY");
+        orderService.updateStatus("0124","SHIPPED");
+        Thread.sleep(2000);
+        orderService.updateStatus("01233","DELIVERED");
+*/
+        //Command Design Pattern
+        OrderProcessor orderProcessor = new OrderProcessor();
+        CommandInvoker commandInvoker = new CommandInvoker();
+        Command placeOrder = new PlaceOrderCommand(orderProcessor,"ORD-123");
+        commandInvoker.execute(placeOrder);
+        commandInvoker.undo();
+   }
+   }

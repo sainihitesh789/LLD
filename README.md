@@ -28,3 +28,18 @@ SOLID Principle
 - Decorator – Adds new behavior to an object dynamically without altering its structure
 - Composite - Treats individual objects and compositions of objects uniformly in a tree structure
 - Facade - Provides a simplified interface to a complex subsystem
+- Proxy - Provides a placeholder or surrogate to control access to another object
+- Bridge - Decouples abstraction from implementation so both can evolve independently
+
+*Behavioural Design Pattern - How Object Communicate*
+- Strategy - Defines a family of algorithms and makes them interchangeable at runtime
+- Observer - Defines a one-to-many dependency so when one object changes state, all dependents are notified(Frequently Used by E.D.A)
+- Command - Encapsulates a request as an object, allowing parameterization and queuing of operations
+- Chain of Responsibility – Passes a request along a chain of handlers until one handles it
+
+| Pattern  | Role in System              |
+|----------|-----------------------------|
+| Strategy | Dynamic Business Rules      |
+| Observer | Event-Driven Communication  |
+| Command  | Action Encapsulation + Undo |
+

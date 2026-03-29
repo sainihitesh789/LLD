@@ -1,0 +1,11 @@
+package org.example.behavioural.observer;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Data
+@Builder
+public class OrderEvent {
+    private final String orderId;
+    private final String status;
+}
